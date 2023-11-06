@@ -10,7 +10,7 @@
 
 ## 功能列表
 
-1. 下载书架上的书到本地，目前仅支持下载 **html** 和 **epub** 格式(后续会支持azw3)
+1. 下载书架上的书到本地，仅支持下载 **html** 和 **epub** 格式
 2. 自动更新阅读时长，可用于刷“读书排行榜”或者“阅读挑战赛”
 3. 每周日晚 23:30 自动领取“时长兑福利”中的免费体验卡(暂未对外开放)
 4. 支持下载用户自己上传的 pdf 格式的书
@@ -80,7 +80,7 @@ yarn dev
 export default {
     async scheduled(event, env, ctx) {
         // 注意：此处的域名替换成你自己部署的域名
-        const resp = await fetch('https://weread.deno.dev/cron/read/v2')
+        const resp = await fetch('https://[your.domain.com]/cron/read/v2')
         console.log(await resp.text())
     },
 };
@@ -94,7 +94,7 @@ worker代码如下：
 export default {
     async scheduled(event, env, ctx) {
         // 注意：此处的域名替换成你自己部署的域名
-        const resp = await fetch('https://weread.deno.dev/cron/exchange-awards')
+        const resp = await fetch('https://[your.domain.com]/cron/exchange-awards')
         console.log(await resp.text())
     },
 };
@@ -121,9 +121,9 @@ export default {
 
 ## 后续计划
 
+- 解决 issue 中的 bug 及提出的优化点；
 - 优化网站样式；
-- 添加更多微信读书API，比如导出自己的笔记；
-- 支持下载 azw3 电子书格式，[可以关注这个issue。](https://github.com/champkeh/wereadx/issues/2)
+- 导出书籍中的的笔记/划线；
 
 
 ## Stargazers over time
